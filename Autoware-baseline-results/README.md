@@ -138,3 +138,7 @@ For example, to execute U-turn scenarios when the ego vehicle travels on the adj
 python script_file_manager.py Autoware-baseline-results/u-turn/scripts/adjacent-lane
 ```
 Each scenario in the folder will be executed sequentially. When a scenario terminates (i.e., when the ego vehicle reaches its goal), the recorded data will be saved to folder `<path-to-folder-to-save-traces>` (provided when running AW-Runtime-Monitor) with incremental numbering.
+
+## Camera Video Data
+Due to the large size of the camera video data, they are not included in this repository. Instead, they are available in this shared Box folder:
+https://jstorage.box.com/s/sqm9b28eql6e9nqfrcdf0h4twcn0o9jb
