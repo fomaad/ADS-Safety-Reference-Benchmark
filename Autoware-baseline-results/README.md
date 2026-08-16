@@ -106,7 +106,7 @@ After launching Autoware and AWSIM-Labs and they are connected, run the followin
 python main.py -o <path-to-folder-to-save-traces> -v false
 ```
 
-where the options `-v false` disable shielding. By default, it is enabled.
+where the option `-v false` disable shielding. By default, it is enabled.
 Note that you need to source Autoware's setup file before launching the monitor.
 For more details about the tool usage, use `python main.py -h`.
 

@@ -29,7 +29,7 @@ To replay the recorded log files in CARLA simulator, please follow these steps:
    $ python scripts/replay.py <absolute-path-to-log-file>
    ```
    Make sure carla API was installed (by `pip install carla`).
-   Also, make sure to use the absolute path to the log file. A relative path will not work since CARLA will will look for the file from the server side.
+   Also, make sure to use the absolute path to the log file. A relative path will not work since CARLA will look for the file from the server side.
    For example, if you cloned the repository to your home directory, then:
     ```bash
     $ python scripts/replay.py ~/ADS-Safety-Reference-Benchmark/CARLA-agents-results/u-turn/run1/uturn_if_if_adjacent_10.log
@@ -62,8 +62,10 @@ To reproduce the experiments with the six learning-based AD agents in CARLA simu
 2. Clone and install PCLA framework, which provides an unified interface to run different learning-based AD agents in CARLA simulator:
    ```bash
    $ git clone https://github.com/MasoudJTehrani/PCLA.git
+   $ cd PCLA
+   $ git checkout 6bd8679ddebb7ab630b8df2710d9062b06c15c84
    ```
-   Then, follow the instructions in its [README](https://github.com/MasoudJTehrani/PCLA) to install the required dependencies.
+   Then, follow the instructions in its [README](https://github.com/MasoudJTehrani/PCLA/tree/6bd8679ddebb7ab630b8df2710d9062b06c15c84) to install the required dependencies. Note that we switched to an earlier version of PCLA because in the latest version, they changed some model names, for example, the model `Transfuser` is renamed to `TransfuserV3`. This will cause our provided scripts to be incompatible with the latest version of PCLA. Also, before running `python pcla_functions/download_weights.py`, you need to revise the variable `DOWNLOAD_URL` in file `pcla_functions/download_weights.py` to "https://huggingface.co/datasets/MasoudJTehrani/PCLA/resolve/2f9db86e365e7704fb3c035f6544ff5e765c37d6/pretrained.zip". This is because the file was deleted from Huggingface repository in its latest version.
 
 3. Copy our Python scripts and XML route files for running the experiments from the `scripts` folder in this repository to the root folder in the cloned PCLA repository.
 

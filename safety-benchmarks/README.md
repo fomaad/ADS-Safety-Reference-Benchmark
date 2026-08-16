@@ -13,7 +13,7 @@ python -m uturn.uturn -vo 10
 For more detailed usage, use the `-h` option:
 ```bash
 python -m uturn.uturn -h
-python -m swerve.uturn -h
+python -m swerve.swerve -h
 ```
 
 ### Motion Visualization
