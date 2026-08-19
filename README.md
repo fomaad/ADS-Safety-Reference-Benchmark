@@ -9,6 +9,7 @@
   * [U-turn scenarios](#u-turn-scenarios)
   * [Swerve scenarios](#swerve-scenarios)
 * [Experiment Replication](#experiment-replication)
+* [Docker Usage](#docker-usage)
 
 ### Repository Overview
 This repository contains the code and data for the paper "Safety Reference Benchmarks with Avoidability Criteria for Evaluating Autonomous Driving Systems."
@@ -122,4 +123,4 @@ Instruction to do it as well as experiment replication steps are provided in the
 
 
 ### Docker Usage
-See [Docker Usage](docker/Docker-Usage.md) for instructions on how to run the experiments in Docker containers.
+See [Docker Usage](Docker-Usage.md) for instructions on how to run the experiments in Docker containers.
