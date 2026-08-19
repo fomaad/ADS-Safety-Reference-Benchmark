@@ -119,3 +119,7 @@ To replicate the Autoware experiments, please follow the instructions in the [Au
 
 The CARLA recorded log files on the experiments with the six AD agents can be replayed directly in CARLA simulator.
 Instruction to do it as well as experiment replication steps are provided in the [CARLA-agents-results](CARLA-agents-results) folder. 
+
+
+### Docker Usage
+See [Docker Usage](docker/Docker-Usage.md) for instructions on how to run the experiments in Docker containers.
