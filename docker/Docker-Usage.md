@@ -9,6 +9,7 @@ The CARLA simulator and its client library need to be installed. The requirement
 - Minimum GPU: NVIDIA GeForce RTX 2070 with at least 8 GB of VRAM
 - NVIDIA driver installed
 - Docker installed
+
 (We run all the experiments on a PC with Ubuntu 22.04 OS, Intel Core i7-14700K CPU, 96 GB RAM, and NVIDIA GeForce RTX 4070 Ti GPU.)
 
 In addition to Docker installation, the Nvidia container toolkit needs to be installed. This is required to run docker with GPU support (pass through NVIDIA GPU from host to a Docker container). 
@@ -145,7 +146,7 @@ Make sure to start the CARLA server from the `carla-server` container before run
 #### 3.2. Autoware experiments
 Once complete the environment setup in Section 1.2, run the following command to launch the Docker container for Autoware and AWSIM-Labs simulator:
 ```
-./run_autoware_awsimlabs.sh
+./run_autoware_docker.sh
 ```
 
 (Since the docker run command is long, we encapsulate it in a shell script.)
