@@ -36,8 +36,6 @@ docker run \
     -v $XDG_RUNTIME_DIR:$XDG_RUNTIME_DIR \
     -v /dev/shm:/dev/shm \
     -v /dev/dri:/dev/dri \
-    -v /usr/share/vulkan/icd.d:/usr/share/vulkan/icd.d:ro \
-    -v /usr/lib/x86_64-linux-gnu/libcuda.so.1:/usr/lib/x86_64-linux-gnu/libcuda.so.1:ro \
     duongtd23/autoware-awsimlabs:latest /bin/bash
 
 # Cleanup
