@@ -73,13 +73,7 @@ The requirements to run the Autoware experiments with AWSIM-Labs simulator are a
 - Nvidia driver version: 570 or higher
 - Nvidia container toolkit installed (see Section 6.2)
 
-ROS 2 needs to be installed as well. The instructions to install ROS Humble on Ubuntu 22.04 can be found at: https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
-In addition, for the best performance, DDS needs to be tuned for the best performance (reference: https://docs.autoware.org/1.5.0/installation/additional-settings-for-developers/network-configuration/dds-settings/). To do so, first, make sure that `ros-humble-rmw-cyclonedds-cpp` package was installed:
-```
-sudo apt install ros-humble-rmw-cyclonedds-cpp
-```
-
-Add the following lines to `~/.bashrc` file:
+For the best performance, network settings should be tuned by adding the following lines to `~/.bashrc` file:
 ```
 if [ ! -e /tmp/cycloneDDS_configured ]; then
     sudo sysctl -w net.core.rmem_max=2147483647
@@ -90,36 +84,10 @@ if [ ! -e /tmp/cycloneDDS_configured ]; then
 fi
 ```
 
-Save the following as `cyclonedds.xml` in your home directory `~`:
+Source the `~/.bashrc` file to apply the changes:
 ```
-<?xml version="1.0" encoding="UTF-8" ?>
-<CycloneDDS xmlns="https://cdds.io/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://cdds.io/config https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/cyclonedds.xsd">
-    <Domain Id="any">
-        <General>
-            <Interfaces>
-                <NetworkInterface name="lo" priority="default" multicast="default" />
-            </Interfaces>
-            <AllowMulticast>default</AllowMulticast>
-            <MaxMessageSize>65500B</MaxMessageSize>
-        </General>
-        <Internal>
-            <SocketReceiveBufferSize min="10MB"/>
-            <Watermarks>
-                <WhcHigh>500kB</WhcHigh>
-            </Watermarks>
-        </Internal>
-    </Domain>
-</CycloneDDS>
+source ~/.bashrc
 ```
-
-Add the following lines are added to the `~/.bashrc` file:
-```
-export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-export CYCLONEDDS_URI=/home/<your_username>/cyclonedds.xml
-```
-
-Make sure to replace `<your_username>` with your actual username (absolute path is required there).
-To make these changes effective, reboot the PC.
 
 Now, pull the docker image that contains compiled Autoware and the AWSIM-Labs simulator:
 ```
