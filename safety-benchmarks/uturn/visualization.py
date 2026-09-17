@@ -4,6 +4,13 @@ from matplotlib.animation import FuncAnimation
 from matplotlib.widgets import Button
 from uturn.uturn import *
 
+ego_length = env_config['ego_length']
+ego_width = env_config['ego_width']
+npc_length = env_config['npc_length']
+npc_width = env_config['npc_width']
+LANE_WIDTH = env_config['lane_width']
+MEDIAN_STRIP = env_config['median_strip']
+
 def simulate_data(ve,vo,dx0,rightmost_lane):
     """
     :param vo: NPC speed in m/s

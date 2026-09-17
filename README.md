@@ -2,6 +2,7 @@
 
 ### Table of Contents
 * [Repository Overview](#repository-overview)
+* [Quick-start for the Benchmark Generation Only](#quick-start-for-the-benchmark-generation-only)
 * [Simulation Demonstrations](#simulation-demonstrations)
   * [Autoware](#autoware)
   * [CARLA Agents](#carla-agents)
@@ -10,6 +11,7 @@
   * [Swerve scenarios](#swerve-scenarios)
 * [Experiment Replication](#experiment-replication)
 * [Docker Usage](#docker-usage)
+* [Paper](#paper)
 
 ### Repository Overview
 This repository contains the code and data for the paper "Safety Reference Benchmarks with Avoidability Criteria for Evaluating Autonomous Driving Systems."
@@ -29,6 +31,9 @@ Trace data, camera videos, and input scripts to simulate all scenarios are provi
 
 \
 <img src="fig-tool-chain.png" alt="Tool chain" width="500"/>
+
+### Quick-start for the Benchmark Generation Only
+To generate the safety reference benchmarks, follow the instructions in the [safety-benchmarks](safety-benchmarks/README.md) folder.
 
 ### Simulation Demonstrations
 
@@ -124,3 +129,16 @@ Instruction to do it as well as experiment replication steps are provided in the
 
 ### Docker Usage
 See [Docker Usage](Docker-Usage.md) for instructions on how to run the experiments in Docker containers.
+
+### Paper
+If you use our benchmark in your research, please cite our paper:
+
+```
+@inproceedings{TranISSRE2026,
+  author = {Tran, Duong Dinh and Riviere, Peter and Tomita, Takashi and Aoki, Toshiaki},
+  title = {{Safety Reference Benchmarks with Avoidability Criteria for Evaluating Autonomous Driving Systems}},
+  booktitle = {The 37th IEEE International Symposium on Software Reliability Engineering, ISSRE 2026},
+  publisher = {{IEEE}},
+  year = {2026},
+}
+```
