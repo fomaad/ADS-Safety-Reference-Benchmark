@@ -19,7 +19,7 @@ This repository mainly includes:
 
 1. Safety reference benchmarks to evaluate ADSs for oncoming traffic scenarios. Check folder [safety-benchmarks](safety-benchmarks) for more details. Code to reproduce the benchmarks and animations visualizing the movements of vehicles for each concrete scenario are provided in the folder.
 
-2. Experiment results on [Autoware version 0.41.2](https://github.com/dtanony/Autoware0412) (released February 20, 2025) against our safety reference benchmarks (folder [Autoware-baseline-results](Autoware-baseline-results)).
+2. Experiment results on [Autoware](https://github.com/autowarefoundation/autoware) (version 0.41.2, released February 20, 2025) against our safety reference benchmarks (folder [Autoware-baseline-results](Autoware-baseline-results)).
 Trace data, camera videos, and input scripts to simulate all scenarios are provided in the folder.
 
 3. Experiment results on six end-to-end learning-based autonomous driving agents (folder [CARLA-agents-results](CARLA-agents-results)). Replayable log files, JSON trace data, and guide to reproduce the experiments with CARLA are provided in the folder.

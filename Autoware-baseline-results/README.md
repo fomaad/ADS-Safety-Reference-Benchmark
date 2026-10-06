@@ -53,7 +53,7 @@ For each NPC speed `{X}`, the mapping between input script files and trace files
 ### Experiment Reproduction
 To run the experiments with Autoware, the following tools, which are available in separate repositories, are required:
 
-- Extended [Autoware](https://github.com/dtanony/autoware0412): This extended version supports activating AEB on demand by sending ROS 2 service requests to it.
+- Extended [Autoware](https://github.com/duongtd23/autoware0412): This extended version supports activating AEB on demand by sending ROS 2 service requests to it.
 
 - Extended [AWSIM-Labs simulator](https://github.com/duongtd23/AWSIM-Labs): This extended version supports simulating U-turn and swerve behaviors of vehicles, and allows AWSIM-Script clients to  issue simulation actions for traffic participants dynamically.
 
@@ -79,7 +79,7 @@ Note that the option `-noise false` disables Gaussian noise in the simulated dat
 By default, noise is enabled.
 
 #### 2. Launch Autoware
-Instructions to install and launch Autoware are provided in its [repository](https://github.com/dtanony/autoware0412).
+Instructions to install and launch Autoware are provided in its [repository](https://github.com/duongtd23/autoware0412).
 To run an end-to-end Autoware simulation with the AWSIM-Labs simulator, a PC equipped with a GPU is required. 
 Because of the specific GPU driver and CUDA dependencies, a pre-built binary release of Autoware is not available for this setup. 
 Therefore, the only option is to build Autoware from source.
