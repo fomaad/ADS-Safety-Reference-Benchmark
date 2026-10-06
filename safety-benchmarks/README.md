@@ -4,7 +4,7 @@ The benchmarks can be viewed in the `png` files inside the [swerve](swerve) and 
 
 ### Benchmark Replication
 Python source code to reproduce the safety benchmarks is provided.
-For example, to reproduce the benchmarks for a U-turn scenario where the ego vehicle travels in the rightmost lane (under left-hand traffic) and the oncoming vehicle (NPC) speed is 10 km/h, run:
+For example, to reproduce the benchmarks for a U-turn scenario where the ego vehicle travels in the innermost lane (under left-hand traffic) and the oncoming vehicle (NPC) speed is 10 km/h, run:
 
 ```bash
 python -m uturn.uturn -vo 10
@@ -20,7 +20,7 @@ python -m swerve.swerve -h
 We also provide code to animate the motions of the two vehicles in a specific scenario.
 This allows users to validate/debug both the simulation and the benchmark results.
 
-For example, the following command produces an animation for a scenario where the ego speed is 20 km/h, the NPC speed is 10 km/h, the ego travels in the lane adjacent to the rightmost lane, and the initial longitudinal distance between them is 25 m:
+For example, the following command produces an animation for a scenario where the ego speed is 20 km/h, the NPC speed is 10 km/h, the ego travels in the lane adjacent to the innermost lane, and the initial longitudinal distance between them is 25 m:
 
 
 ```bash

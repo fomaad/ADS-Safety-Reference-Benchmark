@@ -90,7 +90,7 @@ class UTurnSimulation(Simulation):
         return False
 
 def single_sim_exec(dx0, ve, vo, turning_wheel_angle=TURNING_WHEEL_ANGLE,
-                    wheelbase=WHEEL_BASE, rightmost_lane=True):
+                    wheelbase=WHEEL_BASE, innermost_lane=True):
     sim_step = 0.02
     average_length = (env_config['ego_length'] + env_config['npc_length']) / 2
 
@@ -100,7 +100,7 @@ def single_sim_exec(dx0, ve, vo, turning_wheel_angle=TURNING_WHEEL_ANGLE,
                     wheelbase, turning_wheel_angle)
 
     ego_dy0 = env_config['median_strip'] + env_config['lane_width']
-    if not rightmost_lane:
+    if not innermost_lane:
         ego_dy0 += env_config['lane_width']
     ego = UTurnEgo((0, ego_dy0),
                    (ve,0),
@@ -113,7 +113,7 @@ def single_sim_exec(dx0, ve, vo, turning_wheel_angle=TURNING_WHEEL_ANGLE,
             return False
     return True
 
-def simulation(vo, rightmost_lane=True):
+def simulation(vo, innermost_lane=True):
     """
     :param vo: NPC speed in m/s
     """
@@ -126,7 +126,7 @@ def simulation(vo, rightmost_lane=True):
 
     for ve in [14,20,25,30,35,40,45,50]:
         for dx in range(9, 51):
-            not_collision = single_sim_exec(dx, ve/3.6, vo, rightmost_lane=rightmost_lane)
+            not_collision = single_sim_exec(dx, ve/3.6, vo, innermost_lane=innermost_lane)
             if not_collision:
                 nc_x.append(dx), nc_y.append(ve)
             else:
@@ -148,7 +148,7 @@ def simulation(vo, rightmost_lane=True):
     plt.xlabel('Longitudinal distance (dx0)')
     plt.ylabel('Ego speed (ve)')
     # plot title
-    plt.title(f'Ego: {"rightmost lane" if rightmost_lane else "adjacent lane"}, '
+    plt.title(f'Ego: {"innermost lane" if innermost_lane else "adjacent lane"}, '
               f'vo = {(int)(vo * 3.6)}')
     # showing legend
     plt.legend(bbox_to_anchor=(0.82, 0.8))
@@ -159,17 +159,17 @@ def cli_parser():
                                                  'Safety reference benchmark for U-turn scenarios.')
     parser.add_argument('-vo', type=int, default=10,
                       help='NPC Speed in km/h (default: 10)')
-    parser.add_argument('-l', '--lane', default="rightmost",
-                      help='either `rightmost` or `adjacent` (default: rightmost)')
+    parser.add_argument('-l', '--lane', default="innermost",
+                      help='either `innermost` or `adjacent` (default: innermost)')
     return parser
 
 if __name__ == '__main__':
     cli_args = cli_parser().parse_args()
     vo = cli_args.vo / 3.6
 
-    rightmost = cli_args.lane == "rightmost"
-    if cli_args.lane not in ["rightmost", "adjacent"]:
-        print("[WARNING] Lane must be either `rightmost` or `adjacent`. "
-              "Rightmost is used by default")
-        rightmost = True
-    simulation(vo, rightmost)
+    innermost = cli_args.lane == "innermost"
+    if cli_args.lane not in ["innermost", "adjacent"]:
+        print("[WARNING] Lane must be either `innermost` or `adjacent`. "
+              "innermost is used by default")
+        innermost = True
+    simulation(vo, innermost)

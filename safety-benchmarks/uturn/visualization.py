@@ -11,12 +11,12 @@ npc_width = env_config['npc_width']
 LANE_WIDTH = env_config['lane_width']
 MEDIAN_STRIP = env_config['median_strip']
 
-def simulate_data(ve,vo,dx0,rightmost_lane):
+def simulate_data(ve,vo,dx0,innermost_lane):
     """
     :param vo: NPC speed in m/s
     :param ve: Ego speed in m/s
     :param dx0: Initial longitudinal distance in m
-    :param rightmost_lane: True if ego on rightmost lane, False if ego on the adjacent lane
+    :param innermost_lane: True if ego on innermost lane, False if ego on the adjacent lane
     """
     sim_step = 0.02
     average_length = (ego_length + npc_length) / 2
@@ -27,7 +27,7 @@ def simulate_data(ve,vo,dx0,rightmost_lane):
                    WHEEL_BASE, TURNING_WHEEL_ANGLE)
 
     ego_dy0 = MEDIAN_STRIP + LANE_WIDTH
-    if not rightmost_lane:
+    if not innermost_lane:
         ego_dy0 += LANE_WIDTH
     ego = UTurnEgo((0, ego_dy0),
                    (ve, 0),
@@ -48,15 +48,15 @@ def simulate_data(ve,vo,dx0,rightmost_lane):
 
     return ego_positions, npc_positions, ego_vertices, npc_vertices
 
-def visualize(ve,vo,dx0,rightmost_lane):
+def visualize(ve,vo,dx0,innermost_lane):
     """
     :param vo: NPC speed in m/s
     :param ve: Ego speed in m/s
     :param dx0: Initial longitudinal distance in m
-    :param rightmost_lane: True if ego on rightmost lane, False if ego on the adjacent lane
+    :param innermost_lane: True if ego on innermost lane, False if ego on the adjacent lane
     """
     veh1_positions, veh2_positions, veh1_vertices, veh2_vertices = (
-        simulate_data(ve,vo,dx0,rightmost_lane))
+        simulate_data(ve,vo,dx0,innermost_lane))
     veh1_positions = np.array(veh1_positions)
     veh2_positions = np.array(veh2_positions)
     veh1_vertices = np.array(veh1_vertices)
@@ -85,7 +85,7 @@ def visualize(ve,vo,dx0,rightmost_lane):
                          bbox=dict(facecolor='white', alpha=0.7))
     info_text = ax.text(0.35, 0.9, '', transform=ax.transAxes, fontsize=12)
     info_text.set_text(f"ve={int(ve * 3.6)}, vo={int(vo * 3.6)}, dx0={dx0}, "
-                       f'Ego: {"rightmost lane" if rightmost_lane else "adjacent lane"}')
+                       f'Ego: {"innermost lane" if innermost_lane else "adjacent lane"}')
 
     # Animation state
     anim_running = True
@@ -137,9 +137,9 @@ if __name__ == '__main__':
     ve = cli_args.ve / 3.6
     vo = cli_args.vo / 3.6
     dx0 = cli_args.dx0
-    rightmost = cli_args.lane == "rightmost"
-    if cli_args.lane not in ["rightmost", "adjacent"]:
-        print("[WARNING] Lane must be either `rightmost` or `adjacent`. "
-              "Rightmost is used by default")
-        rightmost = True
-    visualize(ve,vo,dx0,rightmost)
+    innermost = cli_args.lane == "innermost"
+    if cli_args.lane not in ["innermost", "adjacent"]:
+        print("[WARNING] Lane must be either `innermost` or `adjacent`. "
+              "innermost is used by default")
+        innermost = True
+    visualize(ve,vo,dx0,innermost)

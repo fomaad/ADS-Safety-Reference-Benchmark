@@ -101,14 +101,14 @@ From the folder `safety-benchmarks`, run the following command to generate the s
 python -m uturn.uturn
 ```
 
-There are two optional arguments: `-vo` to specify the NPC speed in km/h (default: 10), and `-l` to specify the lane type, either `rightmost` or `adjacent` (default: rightmost). Use option `-h` to see the help message.
+There are two optional arguments: `-vo` to specify the NPC speed in km/h (default: 10), and `-l` to specify the lane type, either `innermost` or `adjacent` (default: innermost). Use option `-h` to see the help message.
 
 Similarly with the swerve scenarios, run the following command to generate the safety benchmark dataset.
 ```
 python -m swerve.swerve
 ```
 
-We also provide code to animate the motions of the two vehicles in a given concrete scenario. This allows users to validate/debug the simulation and/or the benchmark results. For example, the following command produces an animation for a concrete U-turn scenario where the ego speed is 20 km/h, the NPC speed is 10 km/h, the ego travels in the lane adjacent to the rightmost lane, and the initial longitudinal distance between them is 25 m:
+We also provide code to animate the motions of the two vehicles in a given concrete scenario. This allows users to validate/debug the simulation and/or the benchmark results. For example, the following command produces an animation for a concrete U-turn scenario where the ego speed is 20 km/h, the NPC speed is 10 km/h, the ego travels in the lane adjacent to the innermost lane, and the initial longitudinal distance between them is 25 m:
 
 ```
 python -m uturn.visualization -vo 10 -ve 20 -dx0 25 --lane adjacent
@@ -208,7 +208,7 @@ For more details about the tool usage, use option -h.
 
 In terminal #4, we will run the AWSIM-Script to execute desired driving scenarios. AWSIM-Script will act as a client to send scenario specifications to the AWSIM-Labs simulator server. The scenario specification are in *.script file format, and can be found in folder `Autoware-baseline-results/u-turn/scripts` for U-turn scenarios, and in folder `Autoware-baseline-results/swerve/scripts` for swerve scenarios in this artifact (while in the container, they are located in folder /scenarios).
 
-For example, to execute U-turn scenarios when the ego vehicle travels on the adjacent lane to the rightmost lane, run the following command:
+For example, to execute U-turn scenarios when the ego vehicle travels on the adjacent lane to the innermost lane, run the following command:
 
 ```
 source install/setup.bash
