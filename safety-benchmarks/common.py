@@ -166,8 +166,8 @@ carla_town07_env_config = {
     'npc_width': 1.8
 }
 awsim_env_config = {
-    'lane_width': 3.3,
-    'median_strip': 1.0,
+    'lane_width': 3.5,
+    'median_strip': 0.8,
     'ego_length': 4.9,
     'ego_width': 2.2,
     'npc_length': 4.0,

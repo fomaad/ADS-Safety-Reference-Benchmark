@@ -5,7 +5,7 @@ ve = 2.778;
 route1 = [
     "TrafficLane.521" max-velocity(ve),
     // offset, [dx0]
-    uturn(43, 31),
+    uturn(43, 30),
     "TrafficLane.512" max-velocity(ve),
     "TrafficLane.513" max-velocity(ve)
 ];
